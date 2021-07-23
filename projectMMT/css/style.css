@@ -1,3 +1,127 @@
+html, body {
+    margin: 0;
+}
+
+h1, h2, p {
+    margin-block: auto;
+}
+
+#wrapper {
+    width: 100%;
+    position: absolute;
+    height: 800px;
+}
+
 .hidden {
     display: none;
+}
+
+.bgImg {
+    position: absolute;
+    top: 0;
+    z-index: -1;
+    width: 100%;
+}
+
+h2#clock {
+    text-align: center;
+    font-size: 140px;
+    margin-top: 150px;
+    color: #ffffff;
+}
+
+h1#greeting {
+    text-align: center;
+    font-size: 70px;
+    color: #ffffff;
+}
+
+.todo-wrap {
+    text-align: center;
+    width: 500px;
+    margin: 0 auto;
+    border-bottom: 1px solid darkorange;
+    /* padding-bottom: 10px; */
+    height: 50px;
+}
+
+.todo-wrap > input {
+    border: none;
+    background: transparent;
+    font-size: 30px;
+    text-align: center;
+    width: 100%;
+    height: 100%;
+    color: #ffffff;
+}
+
+.todo-wrap > input:focus {
+    display: inline-block;
+    border: none;
+    outline: none;
+    background: transparent;
+    font-size: 30px;
+    text-align: center;
+    width: 100%;
+    height: 100%;
+}
+
+#todo-list {
+    margin-block: auto;
+    margin-inline: unset;
+    padding-inline-start: 0;
+    list-style: none;
+    text-align: center;
+    margin-top: 30px;
+    padding-left: 60px;
+}
+
+#todo-list li span:first-child {
+    color: #ffffff;
+    margin-right: 20px;
+}
+
+#quote {
+    position: absolute;
+    bottom: 10px;
+    right: 40px;
+    color: #ffffff;
+    -webkit-transform:scale(1);
+    -moz-transform:scale(1);
+    -ms-transform:scale(1); 
+    -o-transform:scale(1);  
+    transform:scale(1);
+    -webkit-transition:.7s;
+    -moz-transition:.7s;
+    -ms-transition:.7s;
+    -o-transition:.7s;
+    transition:.7s;
+}
+
+#quote:hover {
+    -webkit-transform:scale(1.05);
+    -moz-transform:scale(1.05);
+    -ms-transform:scale(1.05);   
+    -o-transform:scale(1.05);
+    transform:scale(1.05);
+}
+
+#quote span:first-child {
+    display: block;
+    text-align: left;
+    font-size: 18px;
+}
+
+#quote span:last-child {
+    display: block;
+    text-align: right;
+    font-size: 16px;
+}
+
+#weather {
+    position: absolute;
+    right: 40px;
+    top: 20px;
+    font-size: 25px;
+    color: #ffffff;
 }
