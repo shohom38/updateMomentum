@@ -14,7 +14,13 @@ function deleteToDo(event) {
     console.log(delBtnPosition.id);
     delBtnPosition.remove();
     toDos = toDos.filter((toDo) => toDo.id !== parseInt(delBtnPosition.id)); //빈 어레이에 필터링한 타겟팅된 list id와 toDo에 남아있는 id값이 같은 경우 삭제한다.
+    alert('할 일 목록을 삭제 하시겠습니까?');
     saveToDos();
+}
+
+function editTodo(event) {
+    alert("할 일 목록을 수정 하시겠습니까?");
+    console.log(event.target.parentElement.innerText);
 }
 
 function paintToDo(newToDo) {
@@ -23,10 +29,14 @@ function paintToDo(newToDo) {
     const spanInList = document.createElement("span");
     list.id = newToDo.id;
     spanInList.innerText = newToDo.text;
+    const editBtn = document.createElement("button");
     const delBtn = document.createElement("button");
+    editBtn.innerText = "수정하기";
+    editBtn.addEventListener("click", editTodo);
     delBtn.innerText = "❌";
     delBtn.addEventListener("click", deleteToDo);
     list.appendChild(spanInList);
+    list.appendChild(editBtn);
     list.appendChild(delBtn);
     // console.log(list);
     toDoList.appendChild(list);

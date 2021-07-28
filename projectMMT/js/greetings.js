@@ -13,7 +13,7 @@ function onLoginClick(event) {
 }
 
 function paintGreetings(username) {
-    greetings.innerText = `Hi ${username}`;
+    greetings.innerText = `Hello ${username} !`;
     greetings.classList.remove(HIDDEN_CN);
 }
 
