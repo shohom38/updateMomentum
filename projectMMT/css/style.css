@@ -10,11 +10,69 @@ h1, h2, p {
     width: 100%;
     position: absolute;
     height: 800px;
+    transition: all 2s ease-out;
+}
+
+#wrpper.bgImg {
+    background-size: contain;
 }
 
 .hidden {
     display: none;
 }
+
+/* .name-wrap {
+
+} */
+
+.name-wrap input {
+    border: none;
+    background: transparent;
+    font-size: 30px;
+    text-align: center;
+    width: 100%;
+    height: 100%;
+    color: #ffffff;
+}
+
+.name-wrap input:focus {
+    display: inline-block;
+    border: none;
+    outline: none;
+    background: transparent;
+    font-size: 30px;
+    text-align: center;
+    width: 100%;
+    height: 100%;
+}
+
+.btn-wrap {
+    text-align: center;
+    margin-top: 10px;
+    margin-bottom: 10px;
+    box-sizing: border-box;
+
+}
+.btn-wrap button {
+    background: transparent;
+    border-bottom: 1px solid #ffffff;
+    outline: none;
+    border: none;
+    cursor: pointer;
+    width: 150px;
+    font-size: 25px;
+    color: #ffffff;
+    box-sizing: border-box;
+}
+
+.btn-wrap button:hover {
+    transition: ease .8s;
+    color: greenyellow;
+    border-bottom: 1px solid goldenrod;
+    box-sizing: border-box;
+
+}
+
 
 .bgImg {
     position: absolute;
@@ -53,6 +111,7 @@ h1#greeting {
     width: 100%;
     height: 100%;
     color: #ffffff;
+    cursor: text;
 }
 
 .todo-wrap > input:focus {
@@ -96,6 +155,7 @@ h1#greeting {
     -ms-transition:.7s;
     -o-transition:.7s;
     transition:.7s;
+    cursor: default;
 }
 
 #quote:hover {
