@@ -18,11 +18,6 @@ function deleteToDo(event) {
     saveToDos();
 }
 
-function editTodo(event) {
-    alert("할 일 목록을 수정 하시겠습니까?");
-    console.log(event.target.parentElement.innerText);
-}
-
 function paintToDo(newToDo) {
     // console.log("i will paint", newToDo);
     const list = document.createElement("li");
@@ -32,6 +27,7 @@ function paintToDo(newToDo) {
     const editBtn = document.createElement("button");
     const delBtn = document.createElement("button");
     editBtn.innerText = "수정하기";
+    editBtn.classList.add("editBtn");
     editBtn.addEventListener("click", editTodo);
     delBtn.innerText = "❌";
     delBtn.addEventListener("click", deleteToDo);
@@ -69,4 +65,28 @@ if(savedToDos !== null) {
     console.log(parsedToDos);
     toDos = parsedToDos;
     parsedToDos.forEach(paintToDo);
+}
+
+function editTodo(event) {
+    alert("할 일 목록을 수정 하시겠습니까?");
+    const editTodos = document.createElement("input");
+    editTodos.setAttribute("type", "text");
+    editTodos.setAttribute("placeholder", "수정내용");
+    const editEnterBtn = document.createElement("button");
+    editEnterBtn.innerText = "✏️";
+    editEnterBtn.addEventListener("click", editEnterTodo);
+    const list = document.createElement("li");
+    toDoList.appendChild(list);
+    list.appendChild(editTodos);
+    list.appendChild(editEnterBtn);
+}
+
+function editEnterTodo(editToDo) {
+    const editTodoValue = document.querySelector('#todo-list li input');
+    const valueTodo = editTodoValue.value;
+    console.log(valueTodo);
+    console.log(toDos);
+    toDos.filter((toDo) => toDo.text = valueTodo);
+    saveToDos();
+    paintToDo(editToDo);
 }
