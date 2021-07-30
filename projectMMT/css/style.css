@@ -6,10 +6,28 @@ h1, h2, p {
     margin-block: auto;
 }
 
+button {
+    background: transparent;
+    color: white;
+    border: none;
+    outline: none;
+    vertical-align: middle;
+    cursor: pointer;
+}
+
+.editBtn:hover {
+    border-bottom: 1px solid goldenrod;
+    -webkit-transition: all ease 1.7s;
+    -moz-transition: all ease 1.7s;
+    -ms-transition: all ease 1.7s;
+    -o-transition: all ease 1.7s;
+    transition: all ease 1.7s;
+}
+
 #wrapper {
     width: 100%;
     position: absolute;
-    height: 800px;
+    height: 100%;
     transition: all 2s ease-out;
 }
 
@@ -67,10 +85,13 @@ h1, h2, p {
 
 .btn-wrap button:hover {
     transition: ease .8s;
+    -webkit-transition: ease .8s;
+    -moz-transition: ease .8s;
+    -ms-transition: ease .8s;
+    -o-transition: ease .8s;
     color: greenyellow;
     border-bottom: 1px solid goldenrod;
     box-sizing: border-box;
-
 }
 
 
@@ -164,6 +185,7 @@ h1#greeting {
     -ms-transform:scale(1.05);   
     -o-transform:scale(1.05);
     transform:scale(1.05);
+    color: blanchedalmond;
 }
 
 #quote span:first-child {
@@ -184,4 +206,86 @@ h1#greeting {
     top: 20px;
     font-size: 25px;
     color: #ffffff;
+}
+
+@media all and (min-width: 768px) and (max-width:1023px) {
+    h2#clock {
+        margin-top: 230px;
+        font-size: 100px;
+    }
+
+    h1#greeting {
+        font-size: 50px;
+        margin-top: 20px;
+    }
+
+    #todo-form {
+        margin-top: 30px;
+    }
+
+    #quote {
+        position: absolute;
+        bottom: 60px;
+        right: 0;
+        left: 0;
+    }
+    #quote span:first-child {
+        display: block;
+        text-align: center;
+        font-size: 18px;
+    }
+    
+    #quote span:last-child {
+        display: block;
+        text-align: center;
+        font-size: 16px;
+    }
+}
+
+@media all and (max-width:767px) {
+    h2#clock {
+        margin-top: 130px;
+        font-size: 60px;
+    }
+
+    h1#greeting {
+        font-size: 40px;
+        margin-top: 20px;
+    }
+
+    #todo-form {
+        margin-top: 30px;
+    }
+
+    .todo-wrap {
+        width: 90%;
+        height: 30px;
+    }
+
+    #todo-list > li > span:first-child {
+        display: inline-block;
+        width: 140px;
+    }
+
+    .todo-wrap > input {
+        font-size: 20px;
+    }
+
+    #quote {
+        position: absolute;
+        bottom: 40px;
+        right: 0;
+        left: 0;
+    }
+    #quote span:first-child {
+        display: block;
+        text-align: center;
+        font-size: 16px;
+    }
+    
+    #quote span:last-child {
+        display: block;
+        text-align: center;
+        font-size: 14px;
+    }
 }
