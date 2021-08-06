@@ -12,9 +12,23 @@ function deleteToDo(event) {
     console.log(event.target.parentElement.innerText); //arg 값을 로그 찍고 path 활용해서 위치를 알 수 있다. 몇번째 li인지 확인 한다면?
     const delBtnPosition = event.target.parentElement;
     console.log(delBtnPosition.id);
-    delBtnPosition.remove();
+    var conf = confirm('할 일 목록을 삭제 하시겠습니까?');
+    if(conf == true){
+        delBtnPosition.remove();
+    }
     toDos = toDos.filter((toDo) => toDo.id !== parseInt(delBtnPosition.id)); //빈 어레이에 필터링한 타겟팅된 list id와 toDo에 남아있는 id값이 같은 경우 삭제한다.
-    alert('할 일 목록을 삭제 하시겠습니까?');
+    saveToDos();
+}
+
+function editToDo(event) {
+    console.log(event.target.parentElement.innerText); //arg 값을 로그 찍고 path 활용해서 위치를 알 수 있다. 몇번째 li인지 확인 한다면?
+    const editPosition = event.target.parentElement;
+    console.log(editPosition.id);
+    var conf = confirm('할 일 목록을 수정 하시겠습니까?');
+    if(conf == true){
+        editBtnPosition.remove();
+    }
+    toDos = toDos.filter((toDo) => toDo.id !== parseInt(editBtnPosition.id)); //빈 어레이에 필터링한 타겟팅된 list id와 toDo에 남아있는 id값이 같은 경우 삭제한다.
     saveToDos();
 }
 
@@ -28,7 +42,7 @@ function paintToDo(newToDo) {
     const delBtn = document.createElement("button");
     editBtn.innerText = "수정하기";
     editBtn.classList.add("editBtn");
-    editBtn.addEventListener("click", editTodo);
+    editBtn.addEventListener("click", editToDo);
     delBtn.innerText = "❌";
     delBtn.addEventListener("click", deleteToDo);
     list.appendChild(spanInList);
@@ -65,28 +79,4 @@ if(savedToDos !== null) {
     console.log(parsedToDos);
     toDos = parsedToDos;
     parsedToDos.forEach(paintToDo);
-}
-
-function editTodo(event) {
-    alert("할 일 목록을 수정 하시겠습니까?");
-    const editTodos = document.createElement("input");
-    editTodos.setAttribute("type", "text");
-    editTodos.setAttribute("placeholder", "수정내용");
-    const editEnterBtn = document.createElement("button");
-    editEnterBtn.innerText = "✏️";
-    editEnterBtn.addEventListener("click", editEnterTodo);
-    const list = document.createElement("li");
-    toDoList.appendChild(list);
-    list.appendChild(editTodos);
-    list.appendChild(editEnterBtn);
-}
-
-function editEnterTodo(editToDo) {
-    const editTodoValue = document.querySelector('#todo-list li input');
-    const valueTodo = editTodoValue.value;
-    console.log(valueTodo);
-    console.log(toDos);
-    toDos.filter((toDo) => toDo.text = valueTodo);
-    saveToDos();
-    paintToDo(editToDo);
 }
