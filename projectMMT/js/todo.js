@@ -22,11 +22,12 @@ function deleteToDo(event) {
 
 function editToDo(event) {
     console.log(event.target.parentElement.innerText); //arg 값을 로그 찍고 path 활용해서 위치를 알 수 있다. 몇번째 li인지 확인 한다면?
-    const editPosition = event.target.parentElement;
-    console.log(editPosition.id);
+    const editBtnPosition = event.target.parentElement;
+    console.log(editBtnPosition.id);
     var conf = confirm('할 일 목록을 수정 하시겠습니까?');
     if(conf == true){
-        editBtnPosition.remove();
+        document.querySelector(".none").classList.remove("none");
+        document.querySelector(".spanInList").classList.add("none");
     }
     toDos = toDos.filter((toDo) => toDo.id !== parseInt(editBtnPosition.id)); //빈 어레이에 필터링한 타겟팅된 list id와 toDo에 남아있는 id값이 같은 경우 삭제한다.
     saveToDos();
@@ -36,6 +37,9 @@ function paintToDo(newToDo) {
     // console.log("i will paint", newToDo);
     const list = document.createElement("li");
     const spanInList = document.createElement("span");
+    const editInput = document.createElement("input");
+    spanInList.className += "spanInList";
+    editInput.className += "none";
     list.id = newToDo.id;
     spanInList.innerText = newToDo.text;
     const editBtn = document.createElement("button");
@@ -46,6 +50,7 @@ function paintToDo(newToDo) {
     delBtn.innerText = "❌";
     delBtn.addEventListener("click", deleteToDo);
     list.appendChild(spanInList);
+    list.appendChild(editInput);
     list.appendChild(editBtn);
     list.appendChild(delBtn);
     // console.log(list);

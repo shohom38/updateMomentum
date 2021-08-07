@@ -156,6 +156,11 @@ h1#greeting {
     padding-left: 60px;
 }
 
+#todo-list li span {
+    display: inline-block;
+    width: 300px;
+}
+
 #todo-list li span:first-child {
     color: #ffffff;
     margin-right: 20px;
@@ -207,6 +212,8 @@ h1#greeting {
     font-size: 25px;
     color: #ffffff;
 }
+
+.none {display: none !important;}
 
 @media all and (min-width: 768px) and (max-width:1023px) {
     h2#clock {
