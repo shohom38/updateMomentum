@@ -21,9 +21,16 @@ function deleteToDo(event) {
 }
 
 function editToDo(event) {
-    console.log(event.target.parentElement.innerText); //arg 값을 로그 찍고 path 활용해서 위치를 알 수 있다. 몇번째 li인지 확인 한다면?
+    // console.log(event.target.parentElement.innerText); //arg 값을 로그 찍고 path 활용해서 위치를 알 수 있다. 몇번째 li인지 확인 한다면?
     const editBtnPosition = event.target.parentElement;
     console.log(editBtnPosition.id);
+    const curtxt = event;
+    const editInput = document.createElement("input");
+    editInput.value = curtxt.innerText
+    if(editInput.value == curtxt.inner) {
+        console.log(curtxt.value, " curtxt.value")
+    }
+
     var conf = confirm('할 일 목록을 수정 하시겠습니까?');
     if(conf == true){
         document.querySelector(".none").classList.remove("none");
