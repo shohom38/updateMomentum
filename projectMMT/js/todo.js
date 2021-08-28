@@ -20,33 +20,74 @@ function deleteToDo(event) {
     saveToDos();
 }
 
-function editToDo(event) {
-    // console.log(event.target.parentElement.innerText); //arg 값을 로그 찍고 path 활용해서 위치를 알 수 있다. 몇번째 li인지 확인 한다면?
-    const editBtnPosition = event.target.parentElement;
-    console.log(editBtnPosition.id);
-    const curtxt = event;
-    const editInput = document.createElement("input");
-    editInput.value = curtxt.innerText
-    if(editInput.value == curtxt.inner) {
-        console.log(curtxt.value, " curtxt.value")
-    }
+// let acceess = 2;
 
-    var conf = confirm('할 일 목록을 수정 하시겠습니까?');
-    if(conf == true){
-        document.querySelector(".none").classList.remove("none");
-        document.querySelector(".spanInList").classList.add("none");
+function editToDo(event) {
+
+    var conf = confirm('수정할 내용을 입력한 후 엔터를 치세요!');
+    if(conf == true) {
+        const editBtnPosition = event.target.parentElement.childNodes[0];
+        const delEditBtnPosi = event.target.parentElement;
+        // console.log(delEditBtnPosi.id);
+        // console.log(delEditBtnPosi);
+        let findEditBtn = delEditBtnPosi.getElementsByClassName('editBtn');
+        let findText = delEditBtnPosi.getElementsByClassName('spanInList');
+        // console.log(findEditBtn);
+        // console.log(findText);
+        // console.log(findText[0].innerText);
+        findText[0].innerText = '';
+        findEditBtn[0].remove();
+        // console.log(event.target.parentElement.innerText); //arg 값을 로그 찍고 path 활용해서 위치를 알 수 있다. 몇번째 li인지 확인 한다면?
+        // console.log(editBtnPosition);
+        // console.log(editBtnPosition.id);
+        var curKey = JSON.parse(localStorage.getItem(TODOS_KEY));
+        // console.log(curKey[0].text, 'curKey.text');
+        let curTxt = curKey[0].text;
+        console.log(curTxt);
+        let curTxtPosition = editBtnPosition;
+        // console.log(curTxt.innerText);
+        // console.log(curTxt.innerText);
+        const editInput = document.createElement("input");
+        // curTxt.innerText = editInput.value;
+        // if(editInput.value === curtxt.innertxt) {
+    
+        // }
+        editInput.value = curTxt;
+        console.log(editInput.value);
+        
+        if(editInput.value === curTxt) {
+            console.log('hey');
+            editBtnPosition.insertBefore(editInput, curTxtPosition[1]);
+        }else {
+            console.log('woo');
+        }
+
+        // editInput.value = curtxt.innerText
+        // if(editInput.value == curtxt.innerText) {
+        //     console.log(curtxt.value, " curtxt.value")
+        // }   
+        
+        // 중복 제거..
+        // acceess = acceess -1;
+        // if(acceess <= 0) {
+        //     console.log('editing..');
+            
+        // }else {
+      
+        // }
+        // acceess = acceess + 1;
+        toDos = toDos.filter((toDo) => toDo.id !== parseInt(delEditBtnPosi.id)); //빈 어레이에 필터링한 타겟팅된 list id와 toDo에 남아있는 id값이 같은 경우 삭제한다.
+        // saveToDos();
+        // let editedBtn = editBtnPosition.childNodes[0];
+        // console.log(editedBtn);
     }
-    toDos = toDos.filter((toDo) => toDo.id !== parseInt(editBtnPosition.id)); //빈 어레이에 필터링한 타겟팅된 list id와 toDo에 남아있는 id값이 같은 경우 삭제한다.
-    saveToDos();
 }
 
 function paintToDo(newToDo) {
     // console.log("i will paint", newToDo);
     const list = document.createElement("li");
     const spanInList = document.createElement("span");
-    const editInput = document.createElement("input");
     spanInList.className += "spanInList";
-    editInput.className += "none";
     list.id = newToDo.id;
     spanInList.innerText = newToDo.text;
     const editBtn = document.createElement("button");
@@ -57,7 +98,6 @@ function paintToDo(newToDo) {
     delBtn.innerText = "❌";
     delBtn.addEventListener("click", deleteToDo);
     list.appendChild(spanInList);
-    list.appendChild(editInput);
     list.appendChild(editBtn);
     list.appendChild(delBtn);
     // console.log(list);
