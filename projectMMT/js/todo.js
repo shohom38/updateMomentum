@@ -39,11 +39,12 @@ function editToDo(event) {
         findEditBtn[0].remove();
         // console.log(event.target.parentElement.innerText); //arg 값을 로그 찍고 path 활용해서 위치를 알 수 있다. 몇번째 li인지 확인 한다면?
         // console.log(editBtnPosition);
-        // console.log(editBtnPosition.id);
+        console.log(delEditBtnPosi.id);
+        console.log(delEditBtnPosi);
         var curKey = JSON.parse(localStorage.getItem(TODOS_KEY));
         // console.log(curKey[0].text, 'curKey.text');
         let curTxt = curKey[0].text;
-        console.log(curTxt);
+        // console.log(curTxt);
         let curTxtPosition = editBtnPosition;
         // console.log(curTxt.innerText);
         // console.log(curTxt.innerText);
@@ -62,6 +63,33 @@ function editToDo(event) {
             console.log('woo');
         }
 
+        function addTodoByEnter(e) {
+            if (e.key === 'Enter' && !e.shiftKey) {
+                console.log('pushed enter!');
+                curTxt = editInput.value;
+                toDos.text = editInput.value;
+                localStorage.setItem("toDos", toDos.text);
+                console.log(curTxt);
+                console.log(findText);
+                saveToDos();
+                findText[0].innerText += curTxt;
+                console.log(toDos.text);
+                editInput.remove();
+                const editBtn = document.createElement("button");
+                editBtn.innerText = "수정하기";
+                editBtn.classList.add("editBtn");
+                editBtn.addEventListener("click", editToDo);
+                delEditBtnPosi.insertBefore(editBtn, delEditBtnPosi.lastChild);
+
+
+                
+                toDos = toDos.filter((toDo) => toDo.id !== parseInt(delEditBtnPosi.id)); //빈 어레이에 필터링한 타겟팅된 list id와 toDo에 남아있는 id값이 같은 경우 삭제한다.
+                e.preventDefault();
+            }
+        }
+
+        editInput.addEventListener('keypress', addTodoByEnter);
+
         // editInput.value = curtxt.innerText
         // if(editInput.value == curtxt.innerText) {
         //     console.log(curtxt.value, " curtxt.value")
@@ -76,7 +104,6 @@ function editToDo(event) {
       
         // }
         // acceess = acceess + 1;
-        toDos = toDos.filter((toDo) => toDo.id !== parseInt(delEditBtnPosi.id)); //빈 어레이에 필터링한 타겟팅된 list id와 toDo에 남아있는 id값이 같은 경우 삭제한다.
         // saveToDos();
         // let editedBtn = editBtnPosition.childNodes[0];
         // console.log(editedBtn);
