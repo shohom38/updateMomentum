@@ -67,7 +67,7 @@ function editToDo(event) {
         //     console.log(curtxt.value, " curtxt.value")
         // }   
         
-        // 중복 제거..
+        // 중복 제거.. try
         // acceess = acceess -1;
         // if(acceess <= 0) {
         //     console.log('editing..');
@@ -76,7 +76,8 @@ function editToDo(event) {
       
         // }
         // acceess = acceess + 1;
-        toDos = toDos.filter((toDo) => toDo.id !== parseInt(delEditBtnPosi.id)); //빈 어레이에 필터링한 타겟팅된 list id와 toDo에 남아있는 id값이 같은 경우 삭제한다.
+        // 중복 제거 try end
+        toDos = toDos.filter((toDo) => toDo.id !== parseInt(delEditBtnPosi.id)); // id 값 같은 경우 찾기
         // saveToDos();
         // let editedBtn = editBtnPosition.childNodes[0];
         // console.log(editedBtn);
