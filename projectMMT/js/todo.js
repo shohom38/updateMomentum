@@ -61,7 +61,7 @@ function editToDo(event) {
         }else {
             console.log('woo');
         }
-
+        //---- 2021.09.03 수정 ----
         function addTodoByEnter(e) {
             if (e.key === 'Enter' && !e.shiftKey) {
                 console.log('pushed enter!');
