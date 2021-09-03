@@ -20,7 +20,7 @@ function deleteToDo(event) {
     saveToDos();
 }
 
-// let acceess = 2;
+// let acceess = 2; // 중복 제어 하기 위한 기준
 
 function editToDo(event) {
 
@@ -61,6 +61,34 @@ function editToDo(event) {
         }else {
             console.log('woo');
         }
+
+        function addTodoByEnter(e) {
+            if (e.key === 'Enter' && !e.shiftKey) {
+                console.log('pushed enter!');
+                curTxt = editInput.value;
+                toDos.text += editInput.value;
+                localStorage.setItem("toDos", toDos.text);
+                console.log(curTxt);
+                console.log(findText);
+                saveToDos();
+                findText[0].innerText += curTxt;
+                console.log(toDos.text);
+                console.log(toDos);
+                editInput.remove();
+                const editBtn = document.createElement("button");
+                editBtn.innerText = "수정하기";
+                editBtn.classList.add("editBtn");
+                editBtn.addEventListener("click", editToDo);
+                delEditBtnPosi.insertBefore(editBtn, delEditBtnPosi.lastChild);
+
+
+                
+                toDos = toDos.filter((toDo) => toDo.id !== parseInt(delEditBtnPosi.id)); //빈 어레이에 필터링한 타겟팅된 list id와 toDo에 남아있는 id값이 같은 경우 삭제한다.
+                e.preventDefault();
+            }
+        }
+
+        editInput.addEventListener('keypress', addTodoByEnter);
 
         // editInput.value = curtxt.innerText
         // if(editInput.value == curtxt.innerText) {
