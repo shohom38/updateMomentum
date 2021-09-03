@@ -20,7 +20,7 @@ function deleteToDo(event) {
     saveToDos();
 }
 
-// let acceess = 2;
+// let acceess = 2; // 중복 제어 하기 위한 기준
 
 function editToDo(event) {
 
