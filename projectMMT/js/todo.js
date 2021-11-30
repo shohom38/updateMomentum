@@ -66,12 +66,12 @@ function editToDo(event) {
             if (e.key === 'Enter' && !e.shiftKey) {
                 console.log('pushed enter!');
                 curTxt = editInput.value;
-                toDos.text += editInput.value;
+                toDos.text = editInput.value;
                 localStorage.setItem("toDos", toDos.text);
                 console.log(curTxt);
                 console.log(findText);
                 saveToDos();
-                findText[0].innerText += curTxt;
+                findText[0].innerText = curTxt;
                 console.log(toDos.text);
                 console.log(toDos);
                 editInput.remove();
@@ -83,8 +83,8 @@ function editToDo(event) {
 
 
                 
-                toDos = toDos.filter((toDo) => toDo.id !== parseInt(delEditBtnPosi.id)); //빈 어레이에 필터링한 타겟팅된 list id와 toDo에 남아있는 id값이 같은 경우 삭제한다.
-                e.preventDefault();
+                // toDos = toDos.filter((toDo) => toDo.id !== parseInt(delEditBtnPosi.id)); //빈 어레이에 필터링한 타겟팅된 list id와 toDo에 남아있는 id값이 같은 경우 삭제한다.
+                // e.preventDefault();
             }
         }
 
